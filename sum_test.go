@@ -1,6 +1,10 @@
 package arraynslice
 
-import "testing"
+import (
+	"fmt"
+	"reflect"
+	"testing"
+)
 
 func TestSum(t *testing.T) {
 
@@ -15,5 +19,22 @@ func TestSum(t *testing.T) {
 		}
 
 	})
+}
 
+func TestSumAll(t *testing.T) {
+	t.Run("test 2 slice return 1 slice", func(t *testing.T) {
+		got := SumAll([]int{1, 2}, []int{0, 9})
+		want := []int{3, 9}
+
+		if !reflect.DeepEqual(got, want) {
+			t.Errorf("got %v want %v", got, want)
+		}
+	})
+}
+
+func ExampleSum() {
+	numbers := []int{1, 1, 1, 1, 1}
+	sumOfSlice := Sum(numbers)
+	fmt.Println(sumOfSlice)
+	// Output: 5
 }
