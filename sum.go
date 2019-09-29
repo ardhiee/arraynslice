@@ -10,3 +10,15 @@ func Sum(numbers []int) int {
 
 	return sum
 }
+
+// SumAll sum the slice and combine into single slice
+func SumAll(numbersToSum ...[]int) []int {
+	lengthOfNumbers := len(numbersToSum)
+	sums := make([]int, lengthOfNumbers)
+
+	for i, number := range numbersToSum {
+		sums[i] = Sum(number)
+	}
+
+	return sums
+}
