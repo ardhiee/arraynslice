@@ -13,12 +13,21 @@ func Sum(numbers []int) int {
 
 // SumAll sum the slice and combine into single slice
 func SumAll(numbersToSum ...[]int) []int {
-	lengthOfNumbers := len(numbersToSum)
-	sums := make([]int, lengthOfNumbers)
 
-	for i, number := range numbersToSum {
-		sums[i] = Sum(number)
+	var sums []int
+	for _, numbers := range numbersToSum {
+		sums = append(sums, Sum(numbers))
 	}
+	return sums
+}
 
+// SumAllTails take last member and combine into single slice
+func SumAllTails(numbersToSum ...[]int) []int {
+	var sums []int
+
+	for _, numbers := range numbersToSum {
+		tail := numbers[1:]
+		sums = append(sums, Sum(tail))
+	}
 	return sums
 }
